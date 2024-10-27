@@ -24,6 +24,11 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        brutal: {
+          yellow: "#FFE800",
+          pink: "#FF2E6C",
+          black: "#000000",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -53,10 +58,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      fontFamily: {
+        grotesk: ["Space Grotesk", "sans-serif"],
+        mono: ["Geist Mono", "monospace"],
       },
       keyframes: {
         "accordion-down": {

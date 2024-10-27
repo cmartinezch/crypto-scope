@@ -1,11 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useTopAssets } from "@/lib/api";
+import CryptoCard from "@/components/CryptoCard";
 
 const Index = () => {
+  const { data: assets, isLoading, error } = useTopAssets();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-2xl font-bold animate-pulse">Loading...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-2xl font-bold text-brutal-pink">
+          Error loading assets
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="container py-8">
+      <h1 className="text-6xl font-bold mb-8">
+        Top Crypto
+        <span className="bg-brutal-yellow px-2">Assets</span>
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {assets?.map((asset) => (
+          <CryptoCard key={asset.id} asset={asset} />
+        ))}
       </div>
     </div>
   );
